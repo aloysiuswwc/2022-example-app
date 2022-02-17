@@ -31,7 +31,6 @@ jobs:
   
   sca:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Check out master
         uses: actions/checkout@master
