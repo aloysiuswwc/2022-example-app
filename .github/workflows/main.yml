@@ -102,7 +102,7 @@ jobs:
           path: logs/output.json
 
   deploy:
-    needs: test
+    needs: [test, sast]
     runs-on: ubuntu-latest
 
     steps:
