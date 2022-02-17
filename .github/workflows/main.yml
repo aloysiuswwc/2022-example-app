@@ -81,6 +81,26 @@ jobs:
           python tests/test_04.py
           
           
+  sast:
+    needs: [build, sca]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: mkdir -p logs/
+
+      - name: bandit scan for source code
+        uses: jpetrucciani/bandit-check@master
+        with:
+          path: 'app/web/chaimtube.py'
+          bandit_flags: '-lll -o output.json -f json'
+
+      - uses: actions/upload-artifact@v2
+        with: 
+          name: logs
+          path: logs/output.json
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
