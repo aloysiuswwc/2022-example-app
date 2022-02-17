@@ -44,8 +44,15 @@ jobs:
         run:
           pip install safety
 
+      - run: mkdir -p logs/
+
       - name: sca analysis
-        run: safety -r app/web/requirements.txt
+        run: safety check -r app/web/requirements.txt > logs/safety-logs.txt
+
+      - uses: actions/upload-artifact@v2
+        with: 
+          name: logs
+          path: logs/safety-logs.txt
 
   test:
     needs: [build, sca]
