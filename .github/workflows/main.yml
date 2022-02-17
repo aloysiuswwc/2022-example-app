@@ -31,11 +31,12 @@ jobs:
   
   sca:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Check out master
         uses: actions/checkout@master
 
-      - name: Install Pytjpm
+      - name: Install Python
         uses: actions/setup-python@v1
         with:
           python-version: "3.6"
