@@ -78,7 +78,6 @@ jobs:
         run: |
           python tests/test_01.py
     
-          
       - name: Run path traversal tests
         run: |
           python tests/test_03.py
@@ -101,7 +100,7 @@ jobs:
         uses: jpetrucciani/bandit-check@master
         with:
           path: 'app/web/chaimtube.py'
-          bandit_flags: '-lll -o output.json -f json'
+          bandit_flags: '-lll -o logs/output.json -f json'
 
       - uses: actions/upload-artifact@v2
         with: 
